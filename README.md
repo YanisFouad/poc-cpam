@@ -2,6 +2,7 @@
   - [Prérequis](#prérequis)
   - [Installation](#installation)
   - [Extension Visual Studio Code](#extension-visual-studio-code)
+- [Structure du projet](#structure-du-projet)
 - [Frontend](#frontend)
   - [Installation](#installation-1)
   - [SCSS](#scss)
@@ -39,6 +40,46 @@ L'environnement est fait pour être utilisé uniquement en utilisant Docker (pas
 - PHP Intelephense
 - PHP DocBlocker
 - Twig Language 2
+
+## Structure du projet
+```
+├── assets
+│   ├── js
+│   │   ├── Tous les fichiers JS de l'application
+│   │   └── app.js (fichier principal)
+│   └── styles
+│       ├── app.scss (fichier principal)
+│       └── Tous les fichiers SCSS de l'application
+├── config
+│   └── packages (configuration des packages)
+├── public (dossier public contenant les éléments dans assets une fois compilés)
+├── bin
+│   └── console (console Symfony)
+├── src
+│   ├── Controller (les contrôleurs)
+│   ├── Entity (les entités)
+│   ├── Migrations (les migrations)
+│   ├── Repository (les repositories)
+│   ├── Form (les formulaires)
+│   ├── Security (les classes de sécurité pour l'authentification)
+├── templates (les vues)
+├── docker
+│   ├── php (fichiers de configuration du serveur PHP)
+│   └── nginx (fichiers de configuration du serveur Nginx)
+├── var (fichiers de cache, logs, etc.)
+├── vendor (dépendances PHP)
+├── .env.dist (fichier de configuration)
+├── .gitignore (fichiers ignorés par Git)
+├── composer.json (dépendances PHP)
+├── composer.lock (verrouillage des dépendances PHP)
+├── docker-compose.yml (fichier de configuration de l'environnement Docker)
+├── package.json (dépendances Node.js)
+├── package-lock.json (verrouillage des dépendances Node.js)
+├── webpack.config.js (configuration Webpack Encore)
+```
+
+
+
 
 ## Frontend
 Le frontend est géré par Webpack Encore, il permet de compiler les fichiers SCSS et JS dans une application Symfony. (https://symfony.com/doc/4.x/frontend.html)
