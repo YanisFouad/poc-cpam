@@ -1,0 +1,60 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - .:/var/www:delegated
+    # ports:
+      # - "9000:9000"
+    depends_on:
+      - database
+    networks:
+      - app_network
+
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/var/www/public:delegated
+    depends_on:
+      - php
+    networks:
+      - app_network
+
+  database:
+    image: mysql:5.7.44
+    command: ['mysqld', '--default-authentication-plugin=mysql_native_password']
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cpam
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    ports:
+      - "3306:3306"
+    volumes:
+      - database_data:/var/lib/mysql:rw
+      - ./var/mysql:/var/www/var
+    networks:
+      - app_network
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=database
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - app_network
+    depends_on:
+      - database
+
+networks:
+  app_network:
+
+
+volumes:
+  database_data:

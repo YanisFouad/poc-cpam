@@ -1,0 +1,25 @@
+<header id="header">
+	<div class="header-left">
+    <div class="menu open-main-nav">
+		  <span class="mdi mdi-menu"></span>
+      <span class="menu-text">Menu</span>
+    </div>
+		<img src="{{ asset('build/img/logo.svg') }}" alt="Logo" class="logo">
+	</div>
+	<div class="header-right">
+		<a href="#" class="search-link">
+			<span class="mdi mdi-magnify"></span>
+			Rechercher
+		</a>
+		<a href="{{ app.user ? path('app_logout') : path('app_login') }}" class="btn btn-primary account-link">
+			<span class="mdi mdi-account-circle-outline"></span>
+			{% if app.user %}
+				Se déconnecter
+			{% else %}
+				Se connecter
+			{% endif %}
+		</a>
+	</div>
+</header>
+
+{% include "./navigation/main.html.twig" %}

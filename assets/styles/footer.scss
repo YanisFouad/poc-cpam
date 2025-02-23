@@ -1,0 +1,35 @@
+@import './vars';
+
+#footer {
+    color: $white;
+    position: relative;
+    max-width: 1280px;
+    margin-top: auto;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    &::before {
+        @include background-full($tertiary);
+    }
+
+    .footer-left {
+        .logo {
+            width: 250px;
+        }
+    }
+
+    .footer-right {
+        .footer-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+
+            a {
+                color: $white;
+            }
+        }
+    }
+}

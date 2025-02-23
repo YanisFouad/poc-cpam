@@ -1,0 +1,25 @@
+{% block javascripts %}
+	{{ encore_entry_script_tags('main_nav') }}
+{% endblock %}
+
+<nav id="main-nav">
+    <header>
+        <h2>Menu</h2>
+        <div class="close-main-nav">
+            <span class="mdi mdi-close"></span>
+            <p>Fermer</p>
+        </div>
+    </header>
+    <ul>
+        <li class="nav-link">
+            <a href="{{ path('home') }}">Accueil</a>
+        </li>
+        <li class="nav-link">
+            <a href="{{ path('recipe.index') }}">Recettes</a>
+        </li>
+        <li class="nav-link">
+            <a href="{{ path('game') }}" >Jeux avec Phaser</a>
+        </li>
+    </ul>
+</nav>
+<div class="main-nav-background"></div>

@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Toutes les recettes
+{% endblock %}
+
+{% block body %}
+
+	{% for recipe in recipes %}
+		<li>
+			<a href="{{ path('recipe.show', {'slug': recipe.slug, 'id': recipe.id}) }}">{{ recipe.title }}</a>
+			<form action="{{ path('recipe.delete', {'id': recipe.id}) }}" method="post">
+				{# <input type="hidden" name"_method" value="DELETE"> #}
+				<input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ recipe.id) }}">
+				<button type="submit">Supprimer</button>
+			</form>
+		</li>
+	{% endfor %}
+
+	<a href="{{ path('recipe.new') }}" class="btn btn-primary">Ajouter une recette</a>
+
+{% endblock %}

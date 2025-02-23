@@ -1,0 +1,14 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: auto;
+    max-width: 800px;
+
+    & > div {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+}
